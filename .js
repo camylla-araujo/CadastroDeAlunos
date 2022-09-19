@@ -5,16 +5,20 @@ let alunos = [
     ['Marcelo', 'marcelo@email.com', '85 8888888'],
 ];
 
-
 function novo() {
     pagina_novo.style.display = 'block'; //mostrar
     pagina_listar.style.display = 'none'; //esconder
 }
 
+function limpaLista(){
+    tabela_alunos.innerHTML='';
+}
+
 function listar() {
     pagina_listar.style.display = 'block'; //mostrar
     pagina_novo.style.display = 'none'; //enconder
-
+    
+    limpaLista()
     alunos.forEach(function (cadaAluno) {
         tabela_alunos.innerHTML += `
             <tr>
@@ -25,4 +29,11 @@ function listar() {
             </tr>
         `;
     });
+}
+
+function cadastrar(){
+    event.preventDefault()
+    alunos.push ([`${nome.value}`,`${email.value}`,`${telefone.value}`])
+    listar() 
+
 }
